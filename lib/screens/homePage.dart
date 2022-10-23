@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
-import 'package:flutter/painting.dart';
 import 'package:health_and_doctor_appointment/firestore-data/notificationList.dart';
 import 'package:health_and_doctor_appointment/model/cardModel.dart';
 import 'package:health_and_doctor_appointment/carouselSlider.dart';
@@ -259,8 +257,7 @@ class _HomePageState extends State<HomePage> {
                               //   fit: BoxFit.fill,
                               // ),
                               ),
-                          // ignore: deprecated_member_use
-                          child: FlatButton(
+                          child: ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
@@ -270,8 +267,8 @@ class _HomePageState extends State<HomePage> {
                                         )),
                               );
                             },
-                            shape: new RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(20)),
+                            // shape: new RoundedRectangleBorder(
+                            //     borderRadius: new BorderRadius.circular(20)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
