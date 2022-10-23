@@ -31,7 +31,7 @@ class _BookingScreenState extends State<BookingScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   DateTime selectedDate = DateTime.now();
   TimeOfDay currentTime = TimeOfDay.now();
-  String timeText = 'Select Time';
+  String textTime = 'Select Time';
   String dateUTC;
   String date_Time;
 
@@ -75,8 +75,8 @@ class _BookingScreenState extends State<BookingScreen> {
 
     if (formattedTime != null) {
       setState(() {
-        timeText = formattedTime;
-        _timeController.text = timeText;
+        textTime = formattedTime;
+        _timeController.text = textTime;
       });
     }
     date_Time = selectedTime.toString().substring(10, 15);
@@ -108,7 +108,7 @@ class _BookingScreenState extends State<BookingScreen> {
         ),
       ),
       content: Text(
-        "Appointment is registered.",
+        "Appointment is registered..",
         style: GoogleFonts.lato(),
       ),
       actions: [
