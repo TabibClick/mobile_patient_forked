@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:health_and_doctor_appointment/firestore-data/myAppointmentList.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 
 class MyAppointments extends StatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _MyAppointmentsState extends State<MyAppointments> {
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Text(
-            'My Appointments',
+            S.current.my_appointment,
             style: GoogleFonts.lato(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class _MyAppointmentsState extends State<MyAppointments> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Container(
-        padding: EdgeInsets.only(right: 10, left: 10, top: 10),
+        padding: EdgeInsetsDirectional.only(end: 10, start: 10, top: 10),
         child: MyAppointmentList(),
       ),
     );

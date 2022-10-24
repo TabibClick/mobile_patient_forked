@@ -20,7 +20,7 @@ class _AppointmentHistoryListState extends State<AppointmentHistoryList> {
 
   String _dateFormatter(String _timestamp) {
     String formattedDate =
-        DateFormat('dd-MM-yyyy').format(DateTime.parse(_timestamp));
+        DateFormat('dd-MM-yyyy', 'en').format(DateTime.parse(_timestamp));
     return formattedDate;
   }
 
@@ -35,7 +35,7 @@ class _AppointmentHistoryListState extends State<AppointmentHistoryList> {
 
   String _timeFormatter(String _timestamp) {
     String formattedTime =
-        DateFormat('kk:mm').format(DateTime.parse(_timestamp));
+        DateFormat('kk:mm', 'en').format(DateTime.parse(_timestamp));
     return formattedTime;
   }
 
@@ -80,7 +80,7 @@ class _AppointmentHistoryListState extends State<AppointmentHistoryList> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(left: 10, top: 5),
+                          padding: EdgeInsetsDirectional.only(start: 10, top: 5),
                           height: 50,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(

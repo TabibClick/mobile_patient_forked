@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/bookingScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -51,14 +51,14 @@ class _DoctorProfileState extends State<DoctorProfile> {
                 itemBuilder: (context, index) {
                   DocumentSnapshot document = snapshot.data.docs[index];
                   return Container(
-                    margin: EdgeInsets.only(top: 5),
+                    margin: EdgeInsetsDirectional.only(top: 5),
                     child: Column(
                       children: <Widget>[
                         Container(
-                          alignment: Alignment.centerLeft,
+                          alignment: AlignmentDirectional.centerStart,
                           height: 50,
                           width: MediaQuery.of(context).size.width,
-                          padding: EdgeInsets.only(left: 5),
+                          padding: EdgeInsetsDirectional.only(start: 5),
                           child: IconButton(
                             icon: Icon(
                               Icons.chevron_left_sharp,
@@ -120,7 +120,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           height: 14,
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 22, right: 22),
+                          padding: EdgeInsetsDirectional.only(start: 22, end: 22),
                           alignment: Alignment.center,
                           child: Text(
                             document['specification'],
@@ -218,11 +218,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
                         ),
                         Container(
                           margin: EdgeInsets.symmetric(horizontal: 10),
-                          padding: EdgeInsets.only(left: 60),
+                          padding: EdgeInsetsDirectional.only(start: 60),
                           child: Row(
                             children: [
                               Text(
-                                'Today: ',
+                                S.current.today,
                                 style: GoogleFonts.lato(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -269,7 +269,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                               );
                             },
                             child: Text(
-                              'Book an Appointment',
+                              S.current.book_appointment,
                               style: GoogleFonts.lato(
                                 color: Colors.white,
                                 fontSize: 16,

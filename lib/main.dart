@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/doctorProfile.dart';
 import 'package:health_and_doctor_appointment/screens/firebaseAuth.dart';
 import 'package:health_and_doctor_appointment/mainPage.dart';
@@ -32,20 +33,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _getUser();
-    return MaterialApp(
-      initialRoute: '/',
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => user == null ? Skip() : MainPage(),
-        '/login': (context) => FireBaseAuth(),
-        '/home': (context) => MainPage(),
-        '/profile': (context) => UserProfile(),
-        '/MyAppointments': (context) => MyAppointments(),
-        '/DoctorProfile': (context) => DoctorProfile(),
-      },
-      theme: ThemeData(brightness: Brightness.light),
-      debugShowCheckedModeBanner: false,
-      //home: FirebaseAuthDemo(),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: MaterialApp(
+        initialRoute: '/',
+        supportedLocales: S.delegate.supportedLocales,
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        routes: {
+          // When navigating to the "/" route, build the FirstScreen widget.
+          '/': (context) => user == null ? Skip() : MainPage(),
+          '/login': (context) => FireBaseAuth(),
+          '/home': (context) => MainPage(),
+          '/profile': (context) => UserProfile(),
+          '/MyAppointments': (context) => MyAppointments(),
+          '/DoctorProfile': (context) => DoctorProfile(),
+        },
+        theme: ThemeData(brightness: Brightness.light),
+        debugShowCheckedModeBanner: false,
+        locale: Locale('ar'),
+        //home: FirebaseAuthDemo(),
+      ),
     );
   }
 }

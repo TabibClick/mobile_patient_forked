@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:health_and_doctor_appointment/firestore-data/searchList.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 
 class DoctorsList extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _DoctorsListState extends State<DoctorsList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('Find Doctors'),
+        title: Text(S.current.find_doctor),
         actions: <Widget>[
           SafeArea(
             child: Container(
@@ -42,14 +43,14 @@ class _DoctorsListState extends State<DoctorsList> {
                 controller: _textController,
                 decoration: InputDecoration(
                   contentPadding:
-                      EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                      EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
                   fillColor: Colors.grey[300],
-                  hintText: 'Search Doctor',
+                  hintText: S.current.search_doctor,
                   hintStyle: GoogleFonts.lato(
                     color: Colors.black26,
                     fontSize: 18,
@@ -120,7 +121,7 @@ class _DoctorsListState extends State<DoctorsList> {
                           });
                         },
                         child: Text(
-                          'Show All',
+                          S.current.show_all,
                           style: GoogleFonts.lato(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

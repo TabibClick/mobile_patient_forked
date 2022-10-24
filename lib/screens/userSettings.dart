@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:health_and_doctor_appointment/firestore-data/userDetails.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 
 class UserSettings extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _UserSettingsState extends State<UserSettings> {
         elevation: 2,
         backgroundColor: Colors.white,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsetsDirectional.only(start: 10),
           child: IconButton(
             splashRadius: 25,
             icon: Icon(
@@ -46,7 +47,7 @@ class _UserSettingsState extends State<UserSettings> {
           ),
         ),
         title: Text(
-          'User Settings',
+          S.current.user_setting,
           style: GoogleFonts.lato(
               color: Colors.indigo, fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -71,7 +72,7 @@ class _UserSettingsState extends State<UserSettings> {
               },
               style: TextButton.styleFrom(primary: Colors.grey),
               child: Text(
-                'Sign out',
+                S.current.sign_out,
                 style: GoogleFonts.lato(
                   color: Colors.black,
                   fontSize: 16,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/myAppointments.dart';
 import 'package:intl/intl.dart';
 
@@ -31,7 +32,7 @@ class _BookingScreenState extends State<BookingScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   DateTime selectedDate = DateTime.now();
   TimeOfDay currentTime = TimeOfDay.now();
-  String textTime = 'Select Time';
+  String textTime = S.current.select_time;
   String dateUTC;
   String date_Time;
 
@@ -54,9 +55,9 @@ class _BookingScreenState extends State<BookingScreen> {
           () {
             selectedDate = date;
             String formattedDate =
-                DateFormat('dd-MM-yyyy').format(selectedDate);
+                DateFormat('dd-MM-yyyy', 'en').format(selectedDate);
             _dateController.text = formattedDate;
-            dateUTC = DateFormat('yyyy-MM-dd').format(selectedDate);
+            dateUTC = DateFormat('yyyy-MM-dd', 'en').format(selectedDate);
           },
         );
       },
@@ -86,7 +87,7 @@ class _BookingScreenState extends State<BookingScreen> {
     // set up the button
     Widget okButton = TextButton(
       child: Text(
-        "OK",
+        S.current.ok,
         style: GoogleFonts.lato(fontWeight: FontWeight.bold),
       ),
       onPressed: () {
@@ -102,13 +103,13 @@ class _BookingScreenState extends State<BookingScreen> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text(
-        "Done!",
+        S.current.done,
         style: GoogleFonts.lato(
           fontWeight: FontWeight.bold,
         ),
       ),
       content: Text(
-        "Appointment is registered..",
+        S.current.appointment_is_registered,
         style: GoogleFonts.lato(),
       ),
       actions: [
@@ -142,7 +143,7 @@ class _BookingScreenState extends State<BookingScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Text(
-          'Appointment booking',
+          S.current.appointment_booking,
           style: GoogleFonts.lato(
             color: Colors.black,
             fontSize: 20,
@@ -175,14 +176,14 @@ class _BookingScreenState extends State<BookingScreen> {
                 key: _formKey,
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 20),
-                  padding: EdgeInsets.only(top: 0),
+                  padding: EdgeInsetsDirectional.only(top: 0),
                   child: Column(
                     children: [
                       Container(
-                        alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.only(left: 16),
+                        alignment: AlignmentDirectional.centerStart,
+                        padding: EdgeInsetsDirectional.only(start: 16),
                         child: Text(
-                          'Enter Patient Details',
+                          S.current.enter_patient_details,
                           style: GoogleFonts.lato(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -197,14 +198,14 @@ class _BookingScreenState extends State<BookingScreen> {
                         controller: _nameController,
                         focusNode: f1,
                         validator: (value) {
-                          if (value.isEmpty) return 'Please Enter Patient Name';
+                          if (value.isEmpty) return S.current.please_enter_patient_name;
                           return null;
                         },
                         style: GoogleFonts.lato(
                             fontSize: 18, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
                           contentPadding:
-                              EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                              EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(90.0)),
@@ -212,7 +213,7 @@ class _BookingScreenState extends State<BookingScreen> {
                           ),
                           filled: true,
                           fillColor: Colors.grey[350],
-                          hintText: 'Patient Name*',
+                          hintText: S.current.patient_name,
                           hintStyle: GoogleFonts.lato(
                             color: Colors.black26,
                             fontSize: 18,
@@ -236,7 +237,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             fontSize: 18, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
                           contentPadding:
-                              EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                              EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(90.0)),
@@ -244,7 +245,7 @@ class _BookingScreenState extends State<BookingScreen> {
                           ),
                           filled: true,
                           fillColor: Colors.grey[350],
-                          hintText: 'Mobile*',
+                          hintText: S.current.mobile,
                           hintStyle: GoogleFonts.lato(
                             color: Colors.black26,
                             fontSize: 18,
@@ -253,9 +254,9 @@ class _BookingScreenState extends State<BookingScreen> {
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Please Enter Phone number';
+                            return  S.current.please_enter_phone_number;
                           } else if (value.length < 10) {
-                            return 'Please Enter correct Phone number';
+                            return S.current.please_enter_correct_phone_number;
                           }
                           return null;
                         },
@@ -277,7 +278,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             fontSize: 18, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
                           contentPadding:
-                              EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                              EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(90.0)),
@@ -285,7 +286,7 @@ class _BookingScreenState extends State<BookingScreen> {
                           ),
                           filled: true,
                           fillColor: Colors.grey[350],
-                          hintText: 'Description',
+                          hintText: S.current.description,
                           hintStyle: GoogleFonts.lato(
                             color: Colors.black26,
                             fontSize: 18,
@@ -304,14 +305,14 @@ class _BookingScreenState extends State<BookingScreen> {
                       TextFormField(
                         controller: _doctorController,
                         validator: (value) {
-                          if (value.isEmpty) return 'Please enter Doctor name';
+                          if (value.isEmpty) return S.current.description;
                           return null;
                         },
                         style: GoogleFonts.lato(
                             fontSize: 18, fontWeight: FontWeight.bold),
                         decoration: InputDecoration(
                           contentPadding:
-                              EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                              EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(90.0)),
@@ -319,7 +320,7 @@ class _BookingScreenState extends State<BookingScreen> {
                           ),
                           filled: true,
                           fillColor: Colors.grey[350],
-                          hintText: 'Doctor Name*',
+                          hintText: S.current.doctor_name,
                           hintStyle: GoogleFonts.lato(
                             color: Colors.black26,
                             fontSize: 18,
@@ -340,8 +341,8 @@ class _BookingScreenState extends State<BookingScreen> {
                             TextFormField(
                               focusNode: f4,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(
-                                  left: 20,
+                                contentPadding: EdgeInsetsDirectional.only(
+                                  start: 20,
                                   top: 10,
                                   bottom: 10,
                                 ),
@@ -352,7 +353,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.grey[350],
-                                hintText: 'Select Date*',
+                                hintText: S.current.select_date,
                                 hintStyle: GoogleFonts.lato(
                                   color: Colors.black26,
                                   fontSize: 18,
@@ -362,7 +363,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               controller: _dateController,
                               validator: (value) {
                                 if (value.isEmpty)
-                                  return 'Please Enter the Date';
+                                  return S.current.please_enter_date;
                                 return null;
                               },
                               onFieldSubmitted: (String value) {
@@ -374,7 +375,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 5.0),
+                              padding: const EdgeInsetsDirectional.only(start: 5.0),
                               child: ClipOval(
                                 child: Material(
                                   color: Colors.indigo, // button color
@@ -411,8 +412,8 @@ class _BookingScreenState extends State<BookingScreen> {
                             TextFormField(
                               focusNode: f5,
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.only(
-                                  left: 20,
+                                contentPadding: EdgeInsetsDirectional.only(
+                                  start: 20,
                                   top: 10,
                                   bottom: 10,
                                 ),
@@ -423,7 +424,8 @@ class _BookingScreenState extends State<BookingScreen> {
                                 ),
                                 filled: true,
                                 fillColor: Colors.grey[350],
-                                hintText: 'Select Time*',
+                                hintText: S.current.select_time_
+                                ,
                                 hintStyle: GoogleFonts.lato(
                                   color: Colors.black26,
                                   fontSize: 18,
@@ -433,7 +435,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               controller: _timeController,
                               validator: (value) {
                                 if (value.isEmpty)
-                                  return 'Please Enter the Time';
+                                  return ;
                                 return null;
                               },
                               onFieldSubmitted: (String value) {
@@ -444,7 +446,7 @@ class _BookingScreenState extends State<BookingScreen> {
                                   fontSize: 18, fontWeight: FontWeight.bold),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 5.0),
+                              padding: const EdgeInsetsDirectional.only(start: 5.0),
                               child: ClipOval(
                                 child: Material(
                                   color: Colors.indigo, // button color
@@ -493,7 +495,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             }
                           },
                           child: Text(
-                            "Book Appointment",
+                            S.current.book_appointment,
                             style: GoogleFonts.lato(
                               color: Colors.white,
                               fontSize: 18,

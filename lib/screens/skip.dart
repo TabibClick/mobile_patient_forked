@@ -1,8 +1,7 @@
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import 'firebaseAuth.dart';
@@ -26,12 +25,12 @@ class _SkipState extends State<Skip> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Search Doctors',
+              S.current.search_doctor,
               style:
                   GoogleFonts.lato(fontSize: 30, fontWeight: FontWeight.w900),
             ),
             Text(
-              'Find popular doctors nearby you',
+              S.current.find_popular_doctor,
               style: GoogleFonts.lato(
                   fontSize: 15,
                   color: Colors.grey[500],
@@ -51,12 +50,12 @@ class _SkipState extends State<Skip> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Search Disease',
+              S.current.search_diseases,
               style:
                   GoogleFonts.lato(fontSize: 30, fontWeight: FontWeight.w900),
             ),
             Text(
-              'Find information about disease',
+              S.current.find_diseas_information,
               style: GoogleFonts.lato(
                   fontSize: 15,
                   color: Colors.grey[500],
@@ -82,7 +81,7 @@ class _SkipState extends State<Skip> {
           child: Card(
             child: Center(
               child: Text(
-                'Skip',
+                S.current.skip,
                 textAlign: TextAlign.center,
                 style:
                     GoogleFonts.lato(fontSize: 25, fontWeight: FontWeight.w900),
@@ -100,7 +99,7 @@ class _SkipState extends State<Skip> {
           child: Card(
             child: Center(
               child: Text(
-                'Continue',
+                S.current.continuee,
                 textAlign: TextAlign.center,
                 style:
                     GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.w900),

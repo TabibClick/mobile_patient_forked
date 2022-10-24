@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 
 class DiseaseDetail extends StatefulWidget {
   final String disease;
@@ -40,16 +41,16 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                 physics: ClampingScrollPhysics(),
                 children: snapshot.data.docs.map((document) {
                   return Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: EdgeInsetsDirectional.only(top: 10),
                     child: Column(
                       children: <Widget>[
                         SizedBox(
                           height: 20,
                         ),
                         Container(
-                            margin: EdgeInsets.only(left: 15, right: 15),
-                            padding: EdgeInsets.only(left: 20, right: 20),
-                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsetsDirectional.only(start: 15, end: 15),
+                            padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                            alignment: AlignmentDirectional.centerStart,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.blueGrey[50],
@@ -63,9 +64,9 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                           height: 20,
                         ),
                         Container(
-                            margin: EdgeInsets.only(left: 15, right: 15),
-                            padding: EdgeInsets.only(left: 20, right: 20),
-                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsetsDirectional.only(start: 15, end: 15),
+                            padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                            alignment: AlignmentDirectional.centerStart,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.blueGrey[50],
@@ -74,7 +75,7 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'How does it spread?',
+                                  S.current.how_does_it_spread,
                                   style: GoogleFonts.lato(
                                       color: Colors.black87,
                                       fontSize: 20,
@@ -97,9 +98,9 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                           height: 20,
                         ),
                         Container(
-                            margin: EdgeInsets.only(left: 15, right: 15),
-                            padding: EdgeInsets.only(left: 20, right: 20),
-                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsetsDirectional.only(start: 15, end: 15),
+                            padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                            alignment: AlignmentDirectional.centerStart,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.blueGrey[50],
@@ -108,7 +109,7 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Symtomps',
+                                  S.current.symtomps,
                                   style: GoogleFonts.lato(
                                       color: Colors.black87,
                                       fontSize: 20,
@@ -131,9 +132,9 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                           height: 20,
                         ),
                         Container(
-                            margin: EdgeInsets.only(left: 15, right: 15),
-                            padding: EdgeInsets.only(left: 20, right: 20),
-                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsetsDirectional.only(start: 15, end: 15),
+                            padding: EdgeInsetsDirectional.only(start: 20, end: 20),
+                            alignment: AlignmentDirectional.centerStart,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.blueGrey[50],
@@ -142,7 +143,7 @@ class _DiseaseDetailState extends State<DiseaseDetail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Warning Signs - Seek medical attention',
+                                  S.current.warning_signs,
                                   style: GoogleFonts.lato(
                                       color: Colors.black87,
                                       fontSize: 20,

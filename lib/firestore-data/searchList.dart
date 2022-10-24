@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/doctorProfile.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 
@@ -38,7 +39,7 @@ class _SearchListState extends State<SearchList> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'No Doctor found!',
+                            S.current.no_doctors_found,
                             style: GoogleFonts.lato(
                               color: Colors.blue[800],
                               fontSize: 25,
@@ -63,7 +64,7 @@ class _SearchListState extends State<SearchList> {
                       itemBuilder: (context, index) {
                         DocumentSnapshot doctor = snapshot.data.docs[index];
                         return Padding(
-                          padding: const EdgeInsets.only(top: 0.0),
+                          padding: const EdgeInsetsDirectional.only(top: 0.0),
                           child: Card(
                             color: Colors.blue[50],
                             elevation: 0,
@@ -72,7 +73,7 @@ class _SearchListState extends State<SearchList> {
                             ),
                             child: Container(
                               padding:
-                                  EdgeInsets.only(left: 10, right: 10, top: 0),
+                                  EdgeInsetsDirectional.only(start: 10, end: 10, top: 0),
                               width: MediaQuery.of(context).size.width,
                               height: MediaQuery.of(context).size.height / 9,
                               child: TextButton(

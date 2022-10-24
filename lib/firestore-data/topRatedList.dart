@@ -32,7 +32,7 @@ class _TopRatedListState extends State<TopRatedList> {
             itemBuilder: (context, index) {
               DocumentSnapshot doctor = snapshot.data.docs[index];
               return Padding(
-                padding: const EdgeInsets.only(top: 3.0),
+                padding: const EdgeInsetsDirectional.only(top: 3.0),
                 child: Card(
                   color: Colors.blue[50],
                   elevation: 0,
@@ -40,7 +40,7 @@ class _TopRatedListState extends State<TopRatedList> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Container(
-                    padding: EdgeInsets.only(left: 10, right: 10, top: 0),
+                    padding: EdgeInsetsDirectional.only(start: 10, end: 10, top: 0),
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 9,
                     child: TextButton(

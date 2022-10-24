@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 
 class NotificationList extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class _NotificationListState extends State<NotificationList> {
               Navigator.pop(context);
             }),
         title: Text(
-          'Notifications',
+          S.current.notifications,
           style: GoogleFonts.lato(
             color: Colors.indigo,
             fontSize: 18,

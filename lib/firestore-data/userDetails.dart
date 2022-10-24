@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/updateUserDetails.dart';
 
 class UserDetails extends StatefulWidget {
@@ -18,12 +19,12 @@ class _UserDetailsState extends State<UserDetails> {
   }
 
   List labelName = [
-    'Name',
-    'Email',
-    'Mobile Number',
-    'Bio',
-    'Birthday',
-    'City',
+    S.current.name,
+    S.current.email,
+    S.current.mobile,
+    S.current.bio,
+    S.current.birthdate,
+    S.current.city,
   ];
 
   List value = [
@@ -44,7 +45,7 @@ class _UserDetailsState extends State<UserDetails> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsetsDirectional.only(top: 8.0),
       child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('users')
@@ -69,12 +70,14 @@ class _UserDetailsState extends State<UserDetails> {
                   borderRadius: BorderRadius.circular(10),
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UpdateUserDetails(
-                                  label: labelName[index],
-                                  field: value[index],
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => UpdateUserDetails(
+                          label: labelName[index],
+                          field: value[index],
+                        ),
+                      ),
+                    );
                   },
                   child: Ink(
                     decoration: BoxDecoration(
@@ -98,7 +101,7 @@ class _UserDetailsState extends State<UserDetails> {
                           ),
                           Text(
                             userData[value[index]]?.isEmpty ?? true
-                                ? 'Not Added'
+                                ? S.current.no_added
                                 : userData[value[index]],
                             style: GoogleFonts.lato(
                               color: Colors.black54,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 
 class UpdateUserDetails extends StatefulWidget {
   final String label;
@@ -46,7 +47,7 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
           ),
         ),
         title: Container(
-          alignment: Alignment.centerLeft,
+          alignment: AlignmentDirectional.centerStart,
           child: Text(
             widget.label,
             style: GoogleFonts.lato(
@@ -82,16 +83,14 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
                     textInputAction: TextInputAction.done,
                     validator: (value) {
                       if (value.isEmpty)
-                        return 'Please Enter the ' + widget.label;
+                        return S.current.please_enter_the + widget.label;
                       return null;
                     },
                   ),
                 );
               },
             ),
-            SizedBox(
-              height: 50,
-            ),
+            SizedBox(height: 50),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
               height: 50,
@@ -110,7 +109,7 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
                   ),
                 ),
                 child: Text(
-                  'Update',
+                  S.current.update,
                   style: GoogleFonts.lato(
                       color: Colors.white,
                       fontSize: 18,
@@ -131,7 +130,6 @@ class _UpdateUserDetailsState extends State<UpdateUserDetails> {
     if (widget.field.compareTo('name') == 0) {
       await user.updateProfile(displayName: _textcontroller.text);
     }
-    if (widget.field.compareTo('phone') == 0) {
-    }
+    if (widget.field.compareTo('phone') == 0) {}
   }
 }

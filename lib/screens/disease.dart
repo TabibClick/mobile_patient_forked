@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/diseasedetail.dart';
 
 class Disease extends StatefulWidget {
@@ -16,7 +16,7 @@ class _DiseaseState extends State<Disease> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: Text(
-            'Disease',
+            S.current.disease,
             style: GoogleFonts.lato(
               color: Colors.black,
               fontSize: 20,
@@ -43,7 +43,7 @@ class _DiseaseState extends State<Disease> {
                 physics: BouncingScrollPhysics(),
                 children: snapshot.data.docs.map((document) {
                   return Container(
-                      padding: EdgeInsets.only(left: 10, right: 10, top: 0),
+                      padding: EdgeInsetsDirectional.only(start: 10, end: 10, top: 0),
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 10,
                       decoration: BoxDecoration(

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/signIn.dart';
 
 class Register extends StatefulWidget {
@@ -65,7 +65,7 @@ class _RegisterState extends State<Register> {
     return Form(
       key: _formKey,
       child: Padding(
-        padding: const EdgeInsets.only(right: 16, left: 16),
+        padding: const EdgeInsetsDirectional.only(end: 16, start: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -73,9 +73,9 @@ class _RegisterState extends State<Register> {
               height: 20,
             ),
             Container(
-              padding: EdgeInsets.only(bottom: 50),
+              padding: EdgeInsetsDirectional.only(bottom: 50),
               child: Text(
-                'Sign up',
+                S.current.sign_up,
                 style: GoogleFonts.lato(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -91,14 +91,14 @@ class _RegisterState extends State<Register> {
               keyboardType: TextInputType.emailAddress,
               controller: _displayName,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                contentPadding: EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(90.0)),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
                 fillColor: Colors.grey[350],
-                hintText: 'Name',
+                hintText: S.current.name,
                 hintStyle: GoogleFonts.lato(
                   color: Colors.black26,
                   fontSize: 18,
@@ -111,7 +111,7 @@ class _RegisterState extends State<Register> {
               },
               textInputAction: TextInputAction.next,
               validator: (value) {
-                if (value.isEmpty) return 'Please enter the Name';
+                if (value.isEmpty) return S.current.please_enter_the_name;
                 return null;
               },
             ),
@@ -127,14 +127,14 @@ class _RegisterState extends State<Register> {
               keyboardType: TextInputType.emailAddress,
               controller: _emailController,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                contentPadding: EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(90.0)),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
                 fillColor: Colors.grey[350],
-                hintText: 'Email',
+                hintText: S.current.email,
                 hintStyle: GoogleFonts.lato(
                   color: Colors.black26,
                   fontSize: 18,
@@ -150,9 +150,9 @@ class _RegisterState extends State<Register> {
               textInputAction: TextInputAction.next,
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please enter the Email';
+                  return S.current.please_enter_the_email;
                 } else if (!emailValidate(value)) {
-                  return 'Please enter correct Email';
+                  return S.current.please_enter_correct_email;
                 }
                 return null;
               },
@@ -169,14 +169,14 @@ class _RegisterState extends State<Register> {
               //keyboardType: TextInputType.visiblePassword,
               controller: _passwordController,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                contentPadding: EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(90.0)),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
                 fillColor: Colors.grey[350],
-                hintText: 'Password',
+                hintText: S.current.password,
                 hintStyle: GoogleFonts.lato(
                   color: Colors.black26,
                   fontSize: 18,
@@ -192,9 +192,9 @@ class _RegisterState extends State<Register> {
               textInputAction: TextInputAction.next,
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please enter the Password';
+                  return S.current.please_enter_the_password;
                 } else if (value.length < 8) {
-                  return 'Password must be at least 8 characters long';
+                  return S.current.password_must_be_atleast;
                 } else {
                   return null;
                 }
@@ -212,14 +212,14 @@ class _RegisterState extends State<Register> {
               ),
               controller: _passwordConfirmController,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                contentPadding: EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(90.0)),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
                 fillColor: Colors.grey[350],
-                hintText: 'Confirm Password',
+                hintText: S.current.confirm_password,
                 hintStyle: GoogleFonts.lato(
                   color: Colors.black26,
                   fontSize: 18,
@@ -232,9 +232,9 @@ class _RegisterState extends State<Register> {
               textInputAction: TextInputAction.done,
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Please enter the Password';
+                  return S.current.please_enter_the_password;
                 } else if (value.compareTo(_passwordController.text) != 0) {
-                  return 'Password not Matching';
+                  return S.current.password_not_matching;
                 } else {
                   return null;
                 }
@@ -242,13 +242,13 @@ class _RegisterState extends State<Register> {
               obscureText: true,
             ),
             Container(
-              padding: const EdgeInsets.only(top: 25.0),
+              padding: const EdgeInsetsDirectional.only(top: 25.0),
               child: SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
                   child: Text(
-                    "Sign In",
+                    S.current.sign_in,
                     style: GoogleFonts.lato(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -273,14 +273,14 @@ class _RegisterState extends State<Register> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 25, left: 10, right: 10),
+              padding: EdgeInsetsDirectional.only(top: 25, start: 10, end: 10),
               width: MediaQuery.of(context).size.width,
               child: Divider(
                 thickness: 1.5,
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 25),
+              padding: EdgeInsetsDirectional.only(top: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -316,13 +316,13 @@ class _RegisterState extends State<Register> {
             ),
             Container(
               child: Padding(
-                padding: const EdgeInsets.only(top: 5.0),
+                padding: const EdgeInsetsDirectional.only(top: 5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Already have an account?",
+                     S.current.already_have_account ,
                       style: GoogleFonts.lato(
                         fontSize: 15.0,
                         fontWeight: FontWeight.w700,
@@ -334,7 +334,7 @@ class _RegisterState extends State<Register> {
                               MaterialStateProperty.all(Colors.transparent)),
                       onPressed: () => _pushPage(context, SignIn()),
                       child: Text(
-                        'Sign in',
+                        S.current.sign_in,
                         style: GoogleFonts.lato(
                           fontSize: 15,
                           color: Colors.indigo[700],
@@ -357,7 +357,7 @@ class _RegisterState extends State<Register> {
     // set up the button
     Widget okButton = TextButton(
       child: Text(
-        "OK",
+        S.current.ok,
         style: GoogleFonts.lato(fontWeight: FontWeight.bold),
       ),
       onPressed: () {
@@ -369,13 +369,13 @@ class _RegisterState extends State<Register> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text(
-        "Error!",
+        S.current.error,
         style: GoogleFonts.lato(
           fontWeight: FontWeight.bold,
         ),
       ),
       content: Text(
-        "Email already Exists",
+        S.current.email_already_exist,
         style: GoogleFonts.lato(),
       ),
       actions: [
@@ -398,7 +398,7 @@ class _RegisterState extends State<Register> {
         children: [
           CircularProgressIndicator(),
           Container(
-              margin: EdgeInsets.only(left: 15), child: Text("Loading...")),
+              margin: EdgeInsetsDirectional.only(start: 15), child: Text(S.current.loading)),
         ],
       ),
     );

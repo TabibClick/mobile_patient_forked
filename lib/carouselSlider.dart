@@ -15,16 +15,16 @@ class Carouselslider extends StatelessWidget {
         itemCount: bannerCards.length,
         itemBuilder: (context, index, realIndex) {
           return Container(
-            //alignment:  Alignment.centerLeft,
+            //alignment:  AlignmentDirectional.centerStart,
             //width: MediaQuery.of(context).size.width,
             height: 140,
-            margin: EdgeInsets.only(left: 0, right: 0, bottom: 20),
-            padding: EdgeInsets.only(left: 0),
+            margin: EdgeInsetsDirectional.only(start: 0, end: 0, bottom: 20),
+            padding: EdgeInsetsDirectional.only(start: 0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               gradient: LinearGradient(
                 stops: [0.3, 0.7],
-                begin: Alignment.centerLeft,
+                begin: AlignmentDirectional.centerStart,
                 end: Alignment.centerRight,
                 colors: bannerCards[index].cardBackground,
               ),
@@ -49,7 +49,7 @@ class Carouselslider extends StatelessWidget {
                     fit: BoxFit.fitHeight,
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 7, right: 5),
+                    padding: EdgeInsetsDirectional.only(top: 7, end: 5),
                     alignment: Alignment.topRight,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,

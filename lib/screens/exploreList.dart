@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +31,7 @@ class _ExploreListState extends State<ExploreList> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.only(top: 10),
+        padding: EdgeInsetsDirectional.only(top: 10),
         child: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('doctors')
@@ -62,7 +61,7 @@ class _ExploreListState extends State<ExploreList> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: EdgeInsetsDirectional.only(start: 10, end: 10),
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height / 9,
                       child: TextButton(

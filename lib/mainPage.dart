@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'dart:ui';
-import 'package:health_and_doctor_appointment/firestore-data/searchList.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/homePage.dart';
 import 'package:health_and_doctor_appointment/screens/myAppointments.dart';
 import 'package:health_and_doctor_appointment/screens/userProfile.dart';
@@ -11,7 +10,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
-import 'package:quick_actions/quick_actions.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -40,7 +38,6 @@ class _MainPageState extends State<MainPage> {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
   }
 
-  String shortcut = "no action set";
 
   @override
   void initState() {
@@ -100,25 +97,25 @@ class _MainPageState extends State<MainPage> {
                     icon: _selectedIndex == 0
                         ? FlutterIcons.home_fou
                         : FlutterIcons.home_variant_outline_mco,
-                    text: 'Home',
+                    text: S.current.home,
                   ),
                   GButton(
                     icon: FlutterIcons.search1_ant,
-                    text: 'Search',
+                    text: S.current.search,
                   ),
                   GButton(
                     iconSize: 28,
                     icon: _selectedIndex == 2
                         ? Typicons.calendar
                         : Typicons.calendar_outline,
-                    text: 'Schedule',
+                    text: S.current.schedule,
                   ),
                   GButton(
                     iconSize: 29,
                     icon: _selectedIndex == 3
                         ? Typicons.user
                         : Typicons.user_outline,
-                    text: 'Profile',
+                    text: S.current.profile,
                   ),
                 ],
                 selectedIndex: _selectedIndex,

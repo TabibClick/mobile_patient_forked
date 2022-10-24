@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:health_and_doctor_appointment/firestore-data/notificationList.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/model/cardModel.dart';
 import 'package:health_and_doctor_appointment/carouselSlider.dart';
 import 'package:health_and_doctor_appointment/screens/exploreList.dart';
@@ -47,17 +48,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     String _message;
     DateTime now = DateTime.now();
-    String _currentHour = DateFormat('kk').format(now);
+    String _currentHour = DateFormat('kk', 'en').format(now);
     int hour = int.parse(_currentHour);
 
     setState(
       () {
         if (hour >= 5 && hour < 12) {
-          _message = 'Good Morning';
+          _message = S.current.good_morning;
         } else if (hour >= 12 && hour <= 17) {
-          _message = 'Good Afternoon';
+          _message = S.current.good_afternoon;
         } else {
-          _message = 'Good Evening';
+          _message = S.current.good_evening;
         }
       },
     );
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.white,
         elevation: 0,
         title: Container(
-          padding: EdgeInsets.only(top: 5),
+          padding: EdgeInsetsDirectional.only(top: 5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -118,14 +119,12 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Column(
                 children: [
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: 30),
                   Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(left: 20, bottom: 10),
+                    alignment: AlignmentDirectional.centerStart,
+                    padding: EdgeInsetsDirectional.only(start: 20, bottom: 10),
                     child: Text(
-                      "Hello " + user.displayName,
+                      "مرحبا " + user.displayName,
                       style: GoogleFonts.lato(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
@@ -133,10 +132,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(left: 20, bottom: 25),
+                    alignment: AlignmentDirectional.centerStart,
+                    padding: EdgeInsetsDirectional.only(start: 20, bottom: 25),
                     child: Text(
-                      "Let's Find Your\nDoctor",
+                      S.current.lets_find_doctor,
                       style: GoogleFonts.lato(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
@@ -150,14 +149,14 @@ class _HomePageState extends State<HomePage> {
                       controller: _doctorName,
                       decoration: InputDecoration(
                         contentPadding:
-                            EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                            EdgeInsetsDirectional.only(start: 20, top: 10, bottom: 10),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                           borderSide: BorderSide.none,
                         ),
                         filled: true,
                         fillColor: Colors.grey[200],
-                        hintText: 'Search doctor',
+                        hintText: S.current.search_doctor,
                         hintStyle: GoogleFonts.lato(
                           color: Colors.black26,
                           fontSize: 18,
@@ -200,10 +199,10 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 23, bottom: 10),
-                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsetsDirectional.only(start: 23, bottom: 10),
+                    alignment: AlignmentDirectional.centerStart,
                     child: Text(
-                      "We care for you",
+                      S.current.we_care_for_you,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           color: Colors.blue[800],
@@ -216,10 +215,10 @@ class _HomePageState extends State<HomePage> {
                     child: Carouselslider(),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 20),
-                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsetsDirectional.only(start: 20),
+                    alignment: AlignmentDirectional.centerStart,
                     child: Text(
-                      "Specialists",
+                      S.current.specialists,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           color: Colors.blue[800],
@@ -229,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Container(
                     height: 150,
-                    padding: EdgeInsets.only(top: 14),
+                    padding: EdgeInsetsDirectional.only(top: 14),
                     child: ListView.builder(
                       physics: ClampingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
@@ -238,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         //print("images path: ${cards[index].cardImage.toString()}");
                         return Container(
-                          margin: EdgeInsets.only(right: 14),
+                          margin: EdgeInsetsDirectional.only(end: 14),
                           height: 150,
                           width: 140,
                           decoration: BoxDecoration(
@@ -310,10 +309,10 @@ class _HomePageState extends State<HomePage> {
                     height: 30,
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 20),
-                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsetsDirectional.only(start: 20),
+                    alignment: AlignmentDirectional.centerStart,
                     child: Text(
-                      "Top Rated",
+                      S.current.top_rated,
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                           color: Colors.blue[800],
@@ -325,7 +324,7 @@ class _HomePageState extends State<HomePage> {
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 15, right: 15),
+                    padding: EdgeInsetsDirectional.only(start: 15, end: 15),
                     child: TopRatedList(),
                   ),
                   SizedBox(

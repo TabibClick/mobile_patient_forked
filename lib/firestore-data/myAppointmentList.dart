@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:intl/intl.dart';
 
 class MyAppointmentList extends StatefulWidget {
@@ -29,26 +30,26 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
 
   String _dateFormatter(String _timestamp) {
     String formattedDate =
-        DateFormat('dd-MM-yyyy').format(DateTime.parse(_timestamp));
+        DateFormat('dd-MM-yyyy', 'en').format(DateTime.parse(_timestamp));
     return formattedDate;
   }
 
   String _timeFormatter(String _timestamp) {
     String formattedTime =
-        DateFormat('kk:mm').format(DateTime.parse(_timestamp));
+        DateFormat('kk:mm', 'en').format(DateTime.parse(_timestamp));
     return formattedTime;
   }
 
   showAlertDialog(BuildContext context) {
     // set up the buttons
     Widget cancelButton = TextButton(
-      child: Text("No"),
+      child: Text(S.current.no),
       onPressed: () {
         Navigator.of(context).pop();
       },
     );
     Widget continueButton = TextButton(
-      child: Text("Yes"),
+      child: Text(S.current.yes),
       onPressed: () {
         deleteAppointment(_documentID);
         Navigator.of(context).pop();
@@ -57,8 +58,8 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
 
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Confirm Delete"),
-      content: Text("Are you sure you want to delete this Appointment?"),
+      title: Text(S.current.confirm_delete),
+      content: Text(S.current.are_you_sure_you_want_to_delete_appointment),
       actions: [
         cancelButton,
         continueButton,
@@ -118,7 +119,7 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
           return snapshot.data.size == 0
               ? Center(
                   child: Text(
-                    'No Appointment Scheduled',
+                    S.current.no_appointment_scheduled,
                     style: GoogleFonts.lato(
                       color: Colors.grey,
                       fontSize: 18,
@@ -145,7 +146,7 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 5),
+                                padding: const EdgeInsetsDirectional.only(start: 5),
                                 child: Text(
                                   document['doctor'],
                                   style: GoogleFonts.lato(
@@ -157,8 +158,8 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                               Text(
                                 _compareDate(
                                         document['date'].toDate().toString())
-                                    ? "TODAY"
-                                    : "",
+                                    ? 
+                                    S.current.capital_today : "",
                                 style: GoogleFonts.lato(
                                     color: Colors.green,
                                     fontSize: 18,
@@ -170,7 +171,7 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                             ],
                           ),
                           subtitle: Padding(
-                            padding: const EdgeInsets.only(left: 5),
+                            padding: const EdgeInsetsDirectional.only(start: 5),
                             child: Text(
                               _dateFormatter(
                                   document['date'].toDate().toString()),
@@ -179,8 +180,8 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                           ),
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 20, right: 10, left: 16),
+                              padding: const EdgeInsetsDirectional.only(
+                                  bottom: 20, end: 10, start: 16),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -190,7 +191,7 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Patient name: " + document['name'],
+                                        "${S.current.patient_name}: " + document['name'],
                                         style: GoogleFonts.lato(
                                           fontSize: 16,
                                         ),
@@ -199,7 +200,7 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                                         height: 10,
                                       ),
                                       Text(
-                                        "Time: " +
+                                        S.current.time+
                                             _timeFormatter(
                                               document['date']
                                                   .toDate()
@@ -212,7 +213,7 @@ class _MyAppointmentListState extends State<MyAppointmentList> {
                                     ],
                                   ),
                                   IconButton(
-                                    tooltip: 'Delete Appointment',
+                                    tooltip: S.current.delete_appointment,
                                     icon: Icon(
                                       Icons.delete,
                                       color: Colors.black87,

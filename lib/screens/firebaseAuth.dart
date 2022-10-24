@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:health_and_doctor_appointment/generated/l10n.dart';
 import 'package:health_and_doctor_appointment/screens/register.dart';
 import 'package:health_and_doctor_appointment/screens/signIn.dart';
 
@@ -34,19 +35,19 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
               alignment: Alignment.topCenter,
               child: Container(
                 alignment: Alignment.topLeft,
-                padding: EdgeInsets.only(top: 80.0, left: 25),
+                padding: EdgeInsetsDirectional.only(top: 80.0, start: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'HELLO',
+                      S.current.hello,
                       style: GoogleFonts.b612(
                           color: Colors.black,
                           fontSize: 50,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      'Welcome to Medico!',
+                      S.current.welcome_to_tabib,
                       style: GoogleFonts.b612(
                           color: Colors.indigo[800],
                           fontSize: 17,
@@ -80,7 +81,7 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
                             height: 50.0,
                             child: ElevatedButton(
                               child: Text(
-                                "Sign in",
+                                S.current.sign_in,
                                 style: GoogleFonts.lato(
                                   color: Colors.white,
                                   fontSize: 18.0,
@@ -109,7 +110,7 @@ class _FireBaseAuthState extends State<FireBaseAuth> {
                             height: 50.0,
                             child: ElevatedButton(
                               child: Text(
-                                "Create an Account",
+                                S.current.create_account,
                                 style: GoogleFonts.lato(
                                   color: Colors.black,
                                   fontSize: 18.0,
